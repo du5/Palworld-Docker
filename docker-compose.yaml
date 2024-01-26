@@ -1,0 +1,12 @@
+version: "3"
+services:
+  palworld:
+    container_name: palworld
+    image: standwithccp/palworld:latest
+    volumes:
+      - ${SAVE_PATH}:/home/steam/Steam/steamapps/common/PalServer/Pal/Saved
+    ports:
+      - 8211:8211/udp
+    restart: always
+    environment:
+      TZ: ${TZ}
