@@ -7,6 +7,7 @@ services:
       - ${SAVE_PATH}:/home/steam/Steam/steamapps/common/PalServer/Pal/Saved
     ports:
       - 8211:8211/udp
+      - 27015:27015/udp
     restart: always
     environment:
       TZ: ${TZ}

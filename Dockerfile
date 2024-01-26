@@ -8,8 +8,10 @@ ENV TZ=Asia/Shanghai
 
 USER root
 RUN apt update -qq \
-    && apt install -yqq --no-install-recommends jq \
-    && apt clean
+    && apt install -yqq --no-install-recommends jq xdg-user-dirs procps sudo \
+    && echo "steam ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*
 
 USER steam
 WORKDIR /home/steam/steamcmd
@@ -19,6 +21,7 @@ RUN ./steamcmd.sh +login anonymous +app_update 1007 +app_update 2394010 validate
 
 WORKDIR /home/steam/Steam/steamapps/common/PalServer/
 
-EXPOSE 8211/udp
+EXPOSE 8211/udp \
+    27015/udp
 
 ENTRYPOINT [ "./PalServer.sh" ]
