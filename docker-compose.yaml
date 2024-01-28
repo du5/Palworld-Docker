@@ -11,3 +11,10 @@ services:
     restart: always
     environment:
       TZ: ${TZ}
+    healthcheck:
+      test: |
+        memcheck.bash ${AdminPassword}
+      interval: 300s
+      retries: 5
+      start_period: 20s
+      timeout: 5s

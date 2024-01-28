@@ -1,8 +1,13 @@
+FROM golang:bullseye
+
+RUN go install github.com/itzg/rcon-cli@latest
+
 FROM cm2network/steamcmd
 
 LABEL maintainer=https://github.com/StandWithCCP/Palworld-Docker
 
-COPY apply_patch.bash /usr/local/bin/
+COPY apply_patch.bash memcheck.bash /usr/local/bin/
+COPY --from=0 /go/bin/rcon-cli /usr/local/bin/
 
 ENV TZ=Asia/Shanghai
 

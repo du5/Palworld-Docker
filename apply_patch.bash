@@ -1,5 +1,4 @@
 #!/bin/bash
-curl -sqL https://github.com/itzg/rcon-cli/releases/download/1.6.4/rcon-cli_1.6.4_linux_amd64.tar.gz | tar -xz -C /usr/local/bin
 RELEASES_INFO=$(curl -L -s -H "Accept: application/vnd.github+json" https://api.github.com/repos/VeroFess/PalWorld-Server-Unoffical-Fix/releases | jq -r '.[0]')
 RELEASES_VERSION=$(echo $RELEASES_INFO | jq -r '.tag_name')
 
