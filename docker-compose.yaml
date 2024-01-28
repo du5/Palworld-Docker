@@ -8,6 +8,11 @@ services:
     ports:
       - 8211:8211/udp
       - 27015:27015/udp
+    command: |
+      -useperfthreads
+      -NoAsyncLoadingThread
+      -UseMultithreadForDS
+      port=8211
     restart: always
     environment:
       TZ: ${TZ}
