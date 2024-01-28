@@ -1,6 +1,9 @@
 #!/bin/bash
 
 AdminPassword=$1
+if [ -z "$AdminPassword" ]; then
+    exit 0
+fi
 meminfo=$(cat /proc/meminfo)
 memavailable=$(echo "$meminfo" | grep MemAvailable | awk '{print $2}')
 buffers=$(echo "$meminfo" | grep Buffers | awk '{print $2}')

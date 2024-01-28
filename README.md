@@ -14,11 +14,12 @@
 
 ## 如何使用
 
-在安装完成后，你可以通过服务器的 udp 端口 `8211` 来加入到这个 Palworld 社区服务器。
+> 在一切配置文件修改前，你需要先停止服务器。
 
-默认情况下你的存档文件应该保存在目录 `/opt/palworld` 下。如果你想要修改存档文件的位置，你可以在 `env` 文件中修改 `SAVE_PATH` 的值。
-
-如果你需要自定义服务器的配置，你可以在 `/opt/palworld/Config/LinuxServer/PalWorldSettings.ini` 文件中修改。(在修改前，你需要先停止服务器。)
+- 在安装完成后，你可以通过服务器的端口 `8211` 来加入到这个 Palworld 社区服务器。
+- 默认情况下你的存档文件应该保存在目录 `/opt/palworld` 下。如果你想要修改存档文件的位置，你可以在 `env` 文件中修改 `SAVE_PATH` 的值。
+- 如果你需要自定义服务器的配置，你可以在 `/opt/palworld/Config/LinuxServer/PalWorldSettings.ini` 文件中修改。
+- 如果你想开启服务器的内存检测，你需要将 `/opt/palworld/Config/LinuxServer/PalWorldSettings.ini` 文件中的 `RCONEnabled` 的值修改为 `True`，并将你的自定义 `AdminPassword` 配置到 `.env` 中。(它将在服务器可用内存低于 2GB 时，向服务器通告并在四分钟后重启服务器。)
 
 ## 更新版本
 
