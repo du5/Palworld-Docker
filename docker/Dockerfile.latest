@@ -1,0 +1,3 @@
+FROM standwithccp/palworld:v0.1.3.0
+
+RUN ./steamcmd.sh +login anonymous +app_update 1007 +app_update 2394010 validate +quit

@@ -1,0 +1,27 @@
+FROM golang:bullseye
+
+RUN go install github.com/itzg/rcon-cli@latest
+
+FROM cm2network/steamcmd:root
+
+LABEL maintainer=https://github.com/du5/Palworld-Docker
+
+COPY scripts/* /usr/local/bin/
+COPY --from=0 /go/bin/rcon-cli /usr/local/bin/
+
+ENV TZ=Asia/Shanghai
+
+RUN passwd -d root \
+    && apt update -qq \
+    && apt installl -y -qq xdg-user-dirs procps \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+USER steam
+RUN ./steamcmd.sh +login anonymous +app_update 1007 +app_update 2394010 validate +quit \
+    && sed -i '2i su -c "chown -R steam: /home/steam/Steam/steamapps/common/PalServer/Pal/" root' /home/steam/Steam/steamapps/common/PalServer/PalServer.sh
+
+EXPOSE 8211/udp \
+    27015/udp
+
+ENTRYPOINT [ "/home/steam/Steam/steamapps/common/PalServer/PalServer.sh" ]

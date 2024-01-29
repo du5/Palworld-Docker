@@ -9,8 +9,7 @@
 1. 确保你的机器上已经安装了 Docker 和 Docker Compose。如果还没有安装，你可以参考这些链接进行安装：[Docker](https://docs.docker.com/get-docker/) 和 [Docker Compose](https://docs.docker.com/compose/install/)。
 2. 克隆这个仓库到你的服务器。
 3. 修改 `.env` 文件中的 `SAVE_PATH` 为你想要保存存档文件的位置。
-4. 在项目的根目录下运行 `./init.bash` (首次运行，如果你已经运行过一次，请跳过这一步，重复运行会导致存档文件被覆盖)。
-5. 在项目的根目录下运行 `docker-compose up`。
+4. 在项目的根目录下运行 `docker-compose up`。
 
 ## 如何使用
 

@@ -11,5 +11,5 @@ cached=$(echo "$meminfo" | grep -v SwapCached | grep Cached | awk '{print $2}')
 mem_free=$(($memavailable+$buffers+$cached))
 
 if [ $mem_free -lt 2097152 ]; then
-    rcon-cli --password $AdminPassword Shutdown 240 "Server is shutting down in 4 minutes due to low memory."
+    rcon-cli --password $AdminPassword Shutdown 240
 fi
