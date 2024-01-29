@@ -13,7 +13,7 @@ ENV TZ=Asia/Shanghai
 
 RUN passwd -d root \
     && apt update -qq \
-    && apt installl -y -qq xdg-user-dirs procps \
+    && apt install -y -qq --no-install-recommends xdg-user-dirs procps \
     && apt clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
